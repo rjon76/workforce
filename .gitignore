@@ -1,0 +1,65 @@
+# phpstorm project files
+.idea
+
+# netbeans project files
+nbproject
+
+# zend studio for eclipse project files
+.buildpath
+.project
+.settings
+
+# windows thumbnail cache
+
+Thumbs.db
+
+# composer vendor dir
+/vendor
+
+# composer itself is not needed
+composer.phar
+
+# Mac DS_Store Files
+.DS_Store
+
+syntax: glob
+fcgi-bin/*
+cgi-bin/*
+awstats/*
+cp/*
+bin/*
+*.log
+*.orig
+*.bkp
+*.bak
+*_bkp.*
+*_bkp
+log/*
+logs/*
+tmp/*
+*.bat
+*.exe
+*.rar
+*.zip
+*.db
+*.tar
+*.gz
+*.gzip
+*.swp
+#license.txt
+/*.sql
+
+#/wp-content/upgrade/*
+/wp-content/backupwordpress*/*
+/wp-content/backupwordpress-95577cabb3-backups/*
+#/wp-content/plugins/*
+#/wp-includes/*
+/wp-content/cache/*
+#/wp-content/themes/twentyfourteen/*
+#/wp-admin/*
+#/wp-content/uploads/*
+#sitemap*
+#robots*
+\
+#wp-config.php
+*backwpup-*
