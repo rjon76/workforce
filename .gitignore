@@ -40,7 +40,7 @@ tmp/*
 *.bat
 *.exe
 *.rar
-*.zip
+#*.zip
 *.db
 *.tar
 *.gz
