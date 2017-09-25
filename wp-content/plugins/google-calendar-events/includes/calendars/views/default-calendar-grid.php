@@ -397,7 +397,7 @@ class Default_Calendar_Grid implements Calendar_View {
 				$day_classes .= ' simcal-today simcal-present simcal-day';
 				$the_color = new Color( $calendar->today_color );
 				$bg_color = '#' . $the_color->getHex();
-				$color = $the_color->isDark() ? '#ffffff' : '#000000';
+				$color = $the_color->isDark() ? $the_color->getHex() : $the_color->getHex();
 				$border_style = ' style="border: 1px solid ' . $bg_color . ';"';
 			} elseif ( $current_max < $now ) {
 				$day_classes .= ' simcal-past simcal-day';
@@ -492,7 +492,7 @@ class Default_Calendar_Grid implements Calendar_View {
 				$day_style = ' style="background-color: ' . $bg_color . '; color: ' . $color .'"';
 			} elseif ( $count > 0 ) {
 				$the_color = new Color( $calendar->days_events_color );
-				$color = ! $color ? ( $the_color->isDark() ? '#ffffff' : '#000000' ) : $color;
+				$color = ! $color ? ( $the_color->isDark() ? '#ADAA97' : '#000000' ) : $color;
 				$bg_color = ! $bg_color ? '#' . $the_color->getHex() : $bg_color;
 				$day_style = ' style="background-color: ' . $bg_color . '; color: ' . $color .'"';
 			} else {
