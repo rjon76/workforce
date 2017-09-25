@@ -50,8 +50,7 @@ tmp/*
 /*.sql
 
 #/wp-content/upgrade/*
-/wp-content/backupwordpress*/*
-/wp-content/backupwordpress-95577cabb3-backups/*
+#/wp-content/backupwordpress*/*
 #/wp-content/plugins/*
 #/wp-includes/*
 /wp-content/cache/*
@@ -62,4 +61,4 @@ tmp/*
 #robots*
 \
 #wp-config.php
-*backwpup-*
+#*backwpup-*

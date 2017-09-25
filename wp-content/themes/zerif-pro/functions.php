@@ -1143,7 +1143,12 @@ class zerif_team_widget extends WP_Widget {
      */
     public function upload_scripts()
     {
-        wp_enqueue_script('media-upload');
+        /*
+			wp_enqueue_media();
+   			wp_enqueue_script('upload_media_widget', get_template_directory_uri() . '/js/zerif-attache-media.js', false, '1.0', true);
+		*/
+		
+		wp_enqueue_script('media-upload');
         wp_enqueue_script('thickbox');
         wp_enqueue_script('upload_media_widget', get_template_directory_uri() . '/js/zerif-upload-media.js');
     }
@@ -1164,7 +1169,7 @@ class zerif_team_widget extends WP_Widget {
         extract($args);
 
 ?>
-			<div class="col-lg-3 col-sm-3">
+			<div class="col-lg-4 col-sm-4" data-scrollreveal="enter bottom after 0s over 1s">
 
 				<div class="team-member">
 
@@ -1180,18 +1185,27 @@ class zerif_team_widget extends WP_Widget {
 
 					</figure>
 	
-					<div class="member-details">
+					<div class="member-details ">
 
 					<?php if( !empty($instance['profile_link']) ): ?>
-						<h5 class="dark-text red-border-bottom"><a href="<?php echo apply_filters('widget_title', $instance['profile_link'] ); ?>"><?php if( !empty($instance['name']) ): echo apply_filters('widget_title', $instance['name'] ); endif; ?></a></h5>
+						<h5 class=""><a href="<?php echo apply_filters('widget_title', $instance['profile_link'] ); ?>"><?php if( !empty($instance['name']) ): echo apply_filters('widget_title', $instance['name'] ); endif; ?></a></h5>
 					<?php else: ?>
-						<h5 class="dark-text red-border-bottom"><?php if( !empty($instance['name']) ): echo apply_filters('widget_title', $instance['name'] ); endif; ?></h5>
+						<h5 class=""><?php if( !empty($instance['name']) ): echo apply_filters('widget_title', $instance['name'] ); endif; ?></h5>
 					<?php endif; ?>
 
 						<div class="position"><?php if( !empty($instance['position']) ): echo htmlspecialchars_decode(apply_filters('widget_title', $instance['position'] )); endif; ?></div>
+						<div class="border-bottom orange"></div>
 
 					</div>
-
+					
+					<?php if( !empty($instance['description']) ): 
+						$zerif_widget_description = wp_kses_post($instance['description']);
+					?>
+						<div class="details">
+							<?php echo htmlspecialchars_decode(apply_filters('widget_title', $zerif_widget_description )); ?>
+						</div>
+					<?php endif; ?>
+					
 					<div class="social-icons">
 
 						<ul>
@@ -1288,13 +1302,7 @@ class zerif_team_widget extends WP_Widget {
 
 					</div>
 
-					<?php if( !empty($instance['description']) ): 
-						$zerif_widget_description = wp_kses_post($instance['description']);
-					?>
-						<div class="details">
-							<?php echo htmlspecialchars_decode(apply_filters('widget_title', $zerif_widget_description )); ?>
-						</div>
-					<?php endif; ?>
+					
 
 				</div>
 
@@ -1532,11 +1540,12 @@ class zerif_team_widget extends WP_Widget {
         <input type="checkbox" name="<?php echo esc_html($this->get_field_name('open_new_window')); ?>" id="<?php echo esc_html($this->get_field_id('open_new_window')); ?>" <?php if( !empty($instance['open_new_window']) ): checked( (bool) $instance['open_new_window'], true ); endif; ?> ><?php _e( 'Open links in new window?','zerif-lite' ); ?><br>
     </p>
 
+   
     <p>
             <label for="<?php echo esc_html($this->get_field_name( 'image_uri' )); ?>"><?php _e( 'Image:' ); ?></label>
             <input name="<?php echo esc_html($this->get_field_name( 'image_uri' )); ?>" id="<?php echo esc_html($this->get_field_id( 'image_uri' )); ?>" class="widefat" type="text" size="36"  value="<?php if( !empty($instance['image_uri']) ): echo esc_url( $instance['image_uri'] ); endif; ?>" />
             <input class="upload_image_button" type="button" value="Upload Image" />
-    </p>
+</p>
 
 
 
