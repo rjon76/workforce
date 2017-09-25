@@ -20,31 +20,41 @@
 
 <footer id="footer" role="contentinfo" itemscope="itemscope" itemtype="http://schema.org/WPFooter">
 
-
-
 <?php 
-	if(is_active_sidebar( 'zerif-sidebar-footer' ) || is_active_sidebar( 'zerif-sidebar-footer-2' ) || is_active_sidebar( 'zerif-sidebar-footer-3' )):
-		echo '<div class="footer-widget-wrap"><div class="container">';
+	if(is_active_sidebar( 'zerif-sidebar-footer' ) || is_active_sidebar( 'zerif-sidebar-footer-2' ) || is_active_sidebar( 'zerif-sidebar-footer-3' ) || is_active_sidebar( 'zerif-sidebar-footer-4' ) || is_active_sidebar( 'zerif-sidebar-footer-5' )):
+		echo '<div class="footer-widget-wrap"><div class="container"><div class="row">';
 
 		if(is_active_sidebar( 'zerif-sidebar-footer' )):
-			echo '<div class="footer-widget col-xs-12 col-sm-4">';
+			echo '<div class="footer-widget col-xs-12 col-sm-12 col-md-3">';
 			dynamic_sidebar( 'zerif-sidebar-footer' );
 			echo '</div>';
 		endif;
 
 		if(is_active_sidebar( 'zerif-sidebar-footer-2' )):
-			echo '<div class="footer-widget col-xs-12 col-sm-4">';
+			echo '<div class="footer-widget col-xs-12 col-sm-6 col-md-2">';
 			dynamic_sidebar( 'zerif-sidebar-footer-2' );
 			echo '</div>';
 		endif;
 
 		if(is_active_sidebar( 'zerif-sidebar-footer-3' )):
-			echo '<div class="footer-widget col-xs-12 col-sm-4">';
+			echo '<div class="footer-widget col-xs-12 col-sm-6 col-md-2">';
 			dynamic_sidebar( 'zerif-sidebar-footer-3' );
 			echo '</div>';
 		endif;
-
-		echo '</div></div>';
+		
+		if(is_active_sidebar( 'zerif-sidebar-footer-4' )):
+			echo '<div class="footer-widget col-xs-12 col-sm-6 col-md-3">';
+			dynamic_sidebar( 'zerif-sidebar-footer-4' );
+			echo '</div>';
+		endif;
+		
+		if(is_active_sidebar( 'zerif-sidebar-footer-5' )):
+			echo '<div class="footer-widget col-xs-12 col-sm-6 col-md-2">';
+			dynamic_sidebar( 'zerif-sidebar-footer-5' );
+			echo '</div>';
+		endif;
+	
+		echo '</div></div></div>';
 	endif;
 ?>	
 
@@ -59,13 +69,13 @@
 		$footer_sections = 0;
 	
 		$zerif_address = get_theme_mod('zerif_address',__('Company address','zerif'));
-		$zerif_address_icon = get_theme_mod('zerif_address_icon',get_template_directory_uri().'/images/map25-redish.png');
+		//$zerif_address_icon = get_theme_mod('zerif_address_icon',get_template_directory_uri().'/images/map25-redish.png');
 		
 		$zerif_email = get_theme_mod('zerif_email','<a href="mailto:contact@site.com">contact@site.com</a>');
-		$zerif_email_icon = get_theme_mod('zerif_email_icon',get_template_directory_uri().'/images/envelope4-green.png');
+		//$zerif_email_icon = get_theme_mod('zerif_email_icon',get_template_directory_uri().'/images/envelope4-green.png');
 		
 		$zerif_phone = get_theme_mod('zerif_phone','<a href="tel:0 332 548 954">0 332 548 954</a>');
-		$zerif_phone_icon = get_theme_mod('zerif_phone_icon',get_template_directory_uri().'/images/telephone65-blue.png');
+		//$zerif_phone_icon = get_theme_mod('zerif_phone_icon',get_template_directory_uri().'/images/telephone65-blue.png');
 		
 		$zerif_socials_facebook = get_theme_mod('zerif_socials_facebook','#');
 
@@ -92,113 +102,17 @@
 		$zerif_copyright = get_theme_mod('zerif_copyright');
 		
 		
-		if(!empty($zerif_address) || !empty($zerif_address_icon)):
-			$footer_sections++;
-		endif;
 		
-		if(!empty($zerif_email) || !empty($zerif_email_icon)):
-			$footer_sections++;
-		endif;
-		
-		if(!empty($zerif_phone) || !empty($zerif_phone_icon)):
-			$footer_sections++;
-		endif;
-
-		if(!empty($zerif_socials_facebook) || !empty($zerif_socials_twitter) || !empty($zerif_socials_linkedin) || !empty($zerif_socials_behance) || !empty($zerif_socials_youtube) || !empty($zerif_socials_dribbble) || !empty($zerif_socials_reddit) || !empty($zerif_socials_tumblr) || !empty($zerif_socials_pinterest) || !empty($zerif_socials_googleplus) || !empty($zerif_socials_instagram) || !empty($zerif_copyright)):
-			$footer_sections++;
-		endif;
-		
-		if( $footer_sections == 1 ):
-			$footer_class = 'col-md-12 footer-box one-cell';
-		elseif( $footer_sections == 2 ):
-			$footer_class = 'col-md-6 footer-box two-cell';
-		elseif( $footer_sections == 3 ):
-			$footer_class = 'col-md-4 footer-box three-cell';
-		elseif( $footer_sections == 4 ):
-			$footer_class = 'col-md-3 footer-box four-cell';
-		else:
-			$footer_class = 'col-md-3 footer-box four-cell';
-		endif;
 		
 		global $wp_customize;
 		
-		echo '<div class="footer-box-wrap">';
+		echo '<div class="footer-box-wrap row">';
 		
-		if( !empty($footer_class) ) {
-			
-			/* COMPANY ADDRESS */
-			if( !empty($zerif_address_icon) || !empty($zerif_address) ) { 
-
-				echo '<div class="'.esc_html($footer_class).' company-details">';
-					
-					if( !empty($zerif_address_icon) ) { 
-						echo '<div class="icon-top red-text">';
-							 echo '<img src="'.esc_url($zerif_address_icon).'" alt="" />';
-						echo '</div>';
-					}
-					
-					if( !empty($zerif_address) ) {
-						echo '<div class="zerif-footer-address">';
-							echo wp_kses_post( $zerif_address );
-						echo '</div>';
-					} else if( isset( $wp_customize ) ) {
-						echo '<div class="zerif-footer-address zerif_hidden_if_not_customizer"></div>';
-					}
-					
-				echo '</div>';
-
-			}
-			
-			/* COMPANY EMAIL */
-			if( !empty($zerif_email_icon) || !empty($zerif_email) ) {
-
-				echo '<div class="'.esc_html($footer_class).' company-details">';
-				
-					if( !empty($zerif_email_icon) ) {
-						echo '<div class="icon-top green-text">';
-							echo '<img src="'.esc_url($zerif_email_icon).'" alt="" />';
-						echo '</div>';
-					}
-					if( !empty($zerif_email) ) {
-						echo '<div class="zerif-footer-email">';	
-							echo wp_kses_post( $zerif_email );
-						echo '</div>';
-					} else if( isset( $wp_customize ) ) {
-						echo '<div class="zerif-footer-email zerif_hidden_if_not_customizer"></div>';
-					}	
-				
-				echo '</div>';
-
-			}
-			
-			/* COMPANY PHONE NUMBER */
-			if( !empty($zerif_phone_icon) || !empty($zerif_phone) ) {
-
-				echo '<div class="'.esc_html($footer_class).' company-details">';
-				
-					if( !empty($zerif_phone_icon) ) {
-						echo '<div class="icon-top blue-text">';
-							echo '<img src="'.esc_url($zerif_phone_icon).'" alt="" />';
-						echo '</div>';
-					}
-					if( !empty($zerif_phone) ) {
-						echo '<div class="zerif-footer-phone">';
-							echo wp_kses_post( $zerif_phone );
-						echo '</div>';	
-					} else if( isset( $wp_customize ) ) {
-						echo '<div class="zerif-footer-phone zerif_hidden_if_not_customizer"></div>';
-					}
-					
-				echo '</div>';
-
-			}
-		}
-
-			if( !empty($zerif_socials_facebook) || !empty($zerif_socials_twitter) || !empty($zerif_socials_linkedin) || !empty($zerif_socials_behance) || !empty($zerif_socials_dribbble) || !empty($zerif_socials_reddit) || !empty($zerif_socials_tumblr) || !empty($zerif_socials_pinterest) || !empty($zerif_socials_googleplus) || !empty($zerif_copyright) || !empty($zerif_socials_youtube) || !empty($zerif_socials_instagram) ):
+			if( !empty($zerif_socials_facebook) || !empty($zerif_socials_twitter) || !empty($zerif_socials_linkedin) || !empty($zerif_socials_behance) || !empty($zerif_socials_dribbble) || !empty($zerif_socials_reddit) || !empty($zerif_socials_tumblr) || !empty($zerif_socials_pinterest) || !empty($zerif_socials_googleplus) || !empty($zerif_socials_youtube) || !empty($zerif_socials_instagram) ):
 			
 					$zerif_accessibility = get_theme_mod('zerif_accessibility');
 					$zerif_new_tab = (isset($zerif_accessibility) && ($zerif_accessibility != 1) ? 'target="_blank"' : '');
-					echo '<div class="'.esc_html($footer_class).' copyright">';
+					echo '<div class="col-xs-12 col-sm-12 col-md-3">';
 					if( !empty($zerif_socials_facebook) || !empty($zerif_socials_twitter) || !empty($zerif_socials_linkedin) || !empty($zerif_socials_behance) || !empty($zerif_socials_dribbble) || !empty($zerif_socials_reddit) || !empty($zerif_socials_tumblr) || !empty($zerif_socials_pinterest) || !empty($zerif_socials_googleplus) || !empty($zerif_socials_youtube) || !empty($zerif_socials_instagram) ):
 						$zerif_accessibility = get_theme_mod( 'zerif_accessibility' );
 						echo '<ul class="social">';
@@ -321,7 +235,7 @@
 							} else {
 								$screen_reader_text = '';
 							}
-							echo '<li><a '.$zerif_new_tab.' title="'. __( 'YouTube', 'zerif' ) .'" href="'.esc_url($zerif_socials_youtube).'">'.$screen_reader_text.'<i class="fa fa-youtube"></i></a></li>';
+							echo '<li><a '.$zerif_new_tab.' title="'. __( 'YouTube', 'zerif' ) .'" href="'.esc_url($zerif_socials_youtube).'">'.$screen_reader_text.'<i class="fa fa-youtube-play"></i></a></li>';
 
 						endif;
 						
@@ -339,24 +253,90 @@
 
 						echo '</ul>';
 
-					endif;	
-
-
-					if( !empty($zerif_copyright) ):
-
-						echo '<p id="zerif-copyright">'.wp_kses_post($zerif_copyright).'</p>';
-						
-					elseif( isset( $wp_customize ) ):
-
-						echo '<p id="zerif-copyright" class="zerif_hidden_if_not_customizer"></p>';
-
-					endif;
-					
 					echo '</div>';
+				endif;
+			
+			/* COMPANY ADDRESS */
+			if( !empty($zerif_address_icon) || !empty($zerif_address) ) { 
+
+				echo '<div class="col-xs-12 col-sm-12 col-md-4 company-details">';
+					
+					if( !empty($zerif_address_icon) ) { 
+						echo '<div class="icon-top red-text">';
+							 echo '<img src="'.esc_url($zerif_address_icon).'" alt="" />';
+						echo '</div>';
+					}
+					
+					if( !empty($zerif_address) ) {
+						//echo '<div class="zerif-footer-address">';
+							echo wp_kses_post( $zerif_address );
+						//echo '</div>';
+					} else if( isset( $wp_customize ) ) {
+						echo '<div class="zerif-footer-address zerif_hidden_if_not_customizer"></div>';
+					}
+					
+				echo '</div>';
+
+			}
+			
+			/* COMPANY EMAIL */
+			if( !empty($zerif_email_icon) || !empty($zerif_email) ) {
+
+				echo '<div class="col-xs-12 col-sm-6 col-md-3 company-details">';
+				
+					if( !empty($zerif_email_icon) ) {
+						echo '<div class="icon-top green-text">';
+							echo '<img src="'.esc_url($zerif_email_icon).'" alt="" />';
+						echo '</div>';
+					}
+					if( !empty($zerif_email) ) {
+						//echo '<div class="zerif-footer-email">';	
+							echo wp_kses_post( $zerif_email );
+						//echo '</div>';
+					} else if( isset( $wp_customize ) ) {
+						echo '<div class="zerif-footer-email zerif_hidden_if_not_customizer"></div>';
+					}	
+				
+				echo '</div>';
+
+			}
+			
+			/* COMPANY PHONE NUMBER */
+			if( !empty($zerif_phone_icon) || !empty($zerif_phone) ) {
+
+				echo '<div class="col-xs-12 col-sm-6 col-md-2 company-details">';
+				
+					if( !empty($zerif_phone_icon) ) {
+						//echo '<div class="icon-top blue-text">';
+							echo '<img src="'.esc_url($zerif_phone_icon).'" alt="" />';
+						//echo '</div>';
+					}
+					if( !empty($zerif_phone) ) {
+						echo '<div class="zerif-footer-phone">';
+							echo wp_kses_post( $zerif_phone );
+						echo '</div>';	
+					} else if( isset( $wp_customize ) ) {
+						echo '<div class="zerif-footer-phone zerif_hidden_if_not_customizer"></div>';
+					}
+					
+				echo '</div>';
+
+			}
+
 			
 			endif;
 
 			echo '</div>';
+	
+	
+			if( !empty($zerif_copyright) ):
+				echo '<div class="row copyright">';
+				echo '<div class="col-xs-12">';
+				echo str_replace('%year',date('Y'),wp_kses_post($zerif_copyright));
+				echo '</div>';
+				echo '</div>';
+			endif;
+					
 
 			?>
 	<?php zerif_bottom_footer_trigger(); ?>

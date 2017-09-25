@@ -109,7 +109,7 @@ function wp_themeisle_customize_register( $wp_customize ) {
             'right_ribbon' => __( 'Right ribbon','zerif' ),
             'contact_us' => __( 'Contact us','zerif' ),
             'packages' => __(' Packages','zerif' ),
-            'map' => __( 'Google map','zerif' ),
+            'google_map' => __( 'Google map','zerif' ),
             'subscribe' => __( 'Subscribe','zerif' ),
             'latest_news' => __( 'Latest news','zerif' ),
             'shortcodes' => __('Shortcodes','zerif'),

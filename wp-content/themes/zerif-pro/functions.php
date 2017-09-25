@@ -1,5 +1,5 @@
 <?php
-
+//AIzaSyBD-6Tku0sBdKGHIWU-XuK-XqqrRhixKsE
 /**
 
  * zerif functions and definitions
@@ -287,14 +287,14 @@ function zerif_widgets_init() {
 	) );
 
 	register_sidebars( 
-		3, 
+		5, 
 		array(
 			'name' 			=> __('Footer area %d','zerif'),
 			'id'            => 'zerif-sidebar-footer',
 			'before_widget' => '<aside id="%1$s" class="widget footer-widget-footer %2$s">',
 			'after_widget'  => '</aside>',
-			'before_title'	=> '<h1 class="widget-title">',
-			'after_title'	=> '</h1>'
+			'before_title'	=> '<h5 class="widget-title">',
+			'after_title'	=> '</h5>'
 		) 
 	);
 
@@ -2452,7 +2452,7 @@ function zerif_php_style() {
 	/*********** Footer  ***********/
 	/*******************************/
 	
-	$zerif_footer_background = get_theme_mod('zerif_footer_background');
+/*	$zerif_footer_background = get_theme_mod('zerif_footer_background');
 	if( !empty($zerif_footer_background) ) {
 		echo '	#footer { background: '. $zerif_footer_background .' }';	
 	}
@@ -2483,7 +2483,7 @@ function zerif_php_style() {
 	$zerif_footer_widgets_title_border_bottom = get_theme_mod('zerif_footer_widgets_title_border_bottom','#e96656');
 	if( !empty($zerif_footer_widgets_title_border_bottom) ) {
 		echo '	#footer .footer-widget h1:before { background: '. $zerif_footer_widgets_title_border_bottom .' !important; }';
-	}
+	}*/
 	
 	/**************************************/
 	/*********** END - Footer  ************/
