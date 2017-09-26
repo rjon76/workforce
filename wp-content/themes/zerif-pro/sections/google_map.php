@@ -6,11 +6,14 @@ $zerif_googlemap_static = get_theme_mod('zerif_googlemap_static');
 
 $zerif_googlemap_shortcode = get_theme_mod('zerif_googlemap_shortcode');
 
-if(defined('INTERGEO_PLUGIN_NAME') && !empty($zerif_googlemap_shortcode)) :
+$zerif_googlemap_show = get_theme_mod('zerif_googlemap_show');
+
+if($zerif_googlemap_show):
+	if(!empty($zerif_googlemap_shortcode)) :
 
 	echo do_shortcode ( $zerif_googlemap_shortcode );
 
-else:
+	else:
 
 	if( !empty($zerif_googlemap_address) ):
 
@@ -28,6 +31,7 @@ else:
 
 	endif;
 
+	endif;
 endif;
 
 ?>

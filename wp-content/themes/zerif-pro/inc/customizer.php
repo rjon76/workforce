@@ -84,12 +84,12 @@ function wp_themeisle_customize_register( $wp_customize ) {
         }
     }
 
-    class Zerif_Intergeo_Panel extends WP_Customize_Control {
+/*    class Zerif_Intergeo_Panel extends WP_Customize_Control {
         public function render_content() {
             echo __('You can install <a href="https://wordpress.org/plugins/intergeo-maps/" taget="_blank">WordPress Google Maps Plugin</a> to get more advanced maps option.','zerif');
         }
     }
-
+*/
     $wp_customize->get_setting( 'blogname' )->transport         = 'postMessage';
     $wp_customize->get_setting( 'blogdescription' )->transport  = 'postMessage';
     $wp_customize->get_setting( 'header_textcolor' )->transport = 'postMessage';
@@ -2805,31 +2805,19 @@ function wp_themeisle_customize_register( $wp_customize ) {
         'section' => 'zerif_googlemap_section',
         'priority'    => 3,
     ) );
-    
-    if(defined('INTERGEO_PLUGIN_NAME')) :
-
+  
 		/* zerif_googlemap_shortcode */
-		$wp_customize->add_setting( 'zerif_googlemap_shortcode', array(
+	$wp_customize->add_setting( 'zerif_googlemap_shortcode', array(
 			'sanitize_callback' => 'zerif_sanitize_input'
 		) );
 
-		$wp_customize->add_control( 'zerif_googlemap_shortcode', array(
-			'label'    => __( 'Intergeo Shortcode', 'zerif' ),
+	$wp_customize->add_control( 'zerif_googlemap_shortcode', array(
+			'label'    => __( 'Shortcode', 'zerif' ),
 			'section'  => 'zerif_googlemap_section',
 			'priority'    => 4,
-		));
+	));
 
-    else:
-
-		$wp_customize->add_setting( 'zerif_googlemap_shortcode' );
-
-        $wp_customize->add_control( new Zerif_Intergeo_Panel( $wp_customize, 'zerif_googlemap_shortcode', array(
-			'section'  => 'zerif_googlemap_section',
-			'priority'    => 4,
-        ) ) );
-
-    endif;
-
+   
 /*******************************************************/
 
     /************	GOOGLE CALENDAR SECTION *********************/
@@ -2881,30 +2869,7 @@ function wp_themeisle_customize_register( $wp_customize ) {
     ));
    
     
-    if(defined('INTERGEO_PLUGIN_NAME')) :
-
-		/* zerif_googlemap_shortcode */
-		$wp_customize->add_setting( 'zerif_googlemap_shortcode', array(
-			'sanitize_callback' => 'zerif_sanitize_input'
-		) );
-
-		$wp_customize->add_control( 'zerif_googlemap_shortcode', array(
-			'label'    => __( 'Intergeo Shortcode', 'zerif' ),
-			'section'  => 'zerif_googlemap_section',
-			'priority'    => 4,
-		));
-
-    else:
-
-		$wp_customize->add_setting( 'zerif_googlemap_shortcode' );
-
-        $wp_customize->add_control( new Zerif_Intergeo_Panel( $wp_customize, 'zerif_googlemap_shortcode', array(
-			'section'  => 'zerif_googlemap_section',
-			'priority'    => 4,
-        ) ) );
-
-    endif;
-	
+   
     /********************************************************/
 
     /************	LATEST NEWS SECTION *********************/

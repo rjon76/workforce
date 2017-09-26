@@ -205,6 +205,34 @@ function zerif_create_post_type() {
 						)
 
 	);
+	
+	register_post_type( 'training',
+
+						array(
+
+							'labels' => array(
+
+							'name' => __( 'Training','zerif' ),
+
+							'singular_name' => __( 'Training','zerif' )
+
+						),
+
+						'public' => true,
+
+						'has_archive' => true,
+
+						'taxonomies' => array('category'),
+
+						'supports' => array( 'title', 'editor', 'thumbnail', 'revisions','custom-fields' ),
+
+						'show_ui' => true,
+						
+						'rewrite' => array( 'slug' => 'training' ),
+
+						)
+
+	);
 }
 
 add_action('init', 'zerif_flush');
@@ -297,6 +325,14 @@ function zerif_widgets_init() {
 			'after_title'	=> '</h5>'
 		) 
 	);
+	register_sidebar( array(
+		'name'          => __( 'Page bottom widgets', 'zerif' ),
+		'id'            => 'sidebar-page-bottom',
+		'before_widget' => '',
+		'after_widget'  => '',
+		'before_title'  => '<h2 class="widget-title">',
+		'after_title'   => '</h2>',
+	) );	
 
 }
 
@@ -3023,10 +3059,163 @@ function zerif_pro_themeisle_sdk(){
 zerif_pro_themeisle_sdk(); 
 
  // Get custom value
-function get_field($field_name, $id){
+function my_get_field($field_name, $id){
 	
 	$custom_values = get_post_custom_values( $field_name, $id);	
 
 	return (isset($custom_values[0])) ? $custom_values[0] : NULL;
 
 }
+
+//----------------------------
+remove_filter( 'the_content', 'wpautop' );
+
+remove_filter( 'the_excerpt', 'wpautop' );
+
+function failed_login () {
+    return 'the login information you have entered is incorrect.';
+}
+add_filter ( 'login_errors', 'failed_login' );	
+
+function remove_wp_version () {
+    return '';
+}
+add_filter ( 'the_generator', 'remove_wp_version' );
+
+/*----------*/
+//[b_posts template="content-blog" count="3" category="blog" type="post"]
+function template_post_callback_function( $atts, $content, $tag ){
+   $atts = shortcode_atts(array( 
+      'template' =>  "content-blog",
+	  'count' =>  10,
+	  'category' =>  "blog",
+	   'type' => "post"
+   ), $atts, 'b_posts');     
+//var_dump($atts);
+	$date = date('Ymd');
+   ob_start();  
+
+	$categories = explode(',', $atts['category']);
+	//var_dump($categories);
+	foreach($categories as $key => $slug):
+	
+		//$category = get_category_by_slug($slug);
+	
+		// Get ID first category
+		//$cat_id = $category[0]->cat_ID;
+
+        $args = array(
+			'post_type'   => $atts['type'],
+			'post_status' => 'publish',
+			'posts_per_page' => $atts['count'],
+			'suppress_filters' => false,
+			'orderby' => 'date',
+			'order' => 'ASC',
+			'category_name' => $slug,
+			'meta_key' => 'date_start',
+			'orderby'=>'meta_value',
+			'meta_query' => array(
+        	array  (
+           	 	'key' => 'date_stop',
+           	 	'value' => $date,
+				'compare' => '<='
+       		 )
+			)
+        );
+		
+        query_posts($args); 
+
+        if (have_posts()) :
+            while (have_posts()) {
+                the_post();
+
+                get_template_part( $atts['template']);
+            }// end while
+    	endif;
+		
+		wp_reset_query(); 
+	
+	endforeach;
+
+   $ret = ob_get_contents();  
+   ob_end_clean();  
+   return $content.$ret;    
+}
+
+add_shortcode('b_posts', 'template_post_callback_function');  
+
+/*----------*/
+//[su_posts template="content-blog.php" count="3" category="72"]
+function template_page_callback_function( $atts, $content, $tag ){
+   $atts = shortcode_atts(array( 
+      'slug' =>  "",
+	
+   ), $atts, 'b_page');     
+//var_dump($atts);
+   ob_start();  
+	$args = array(
+    	'name'        => $atts['slug'],
+    	'post_type'   => 'page',
+   		// 'post_status' => 'publish',
+    	'numberposts' => 1
+	);
+	
+	$postPage = get_posts($args);
+	
+	if( $postPage ) : 
+		//$content = get_extended(wpautop($postPage[0]->post_content));
+		//echo  $postPage[0]->post_content;
+		echo apply_filters('the_content', $postPage[0]->post_content);
+	endif; 
+	
+	wp_reset_query(); 
+   
+   $ret = ob_get_contents();  
+   
+   ob_end_clean();  
+   
+   return $content.$ret;    
+}
+
+add_shortcode('b_page', 'template_page_callback_function');  
+
+/*---------------------------*/
+//[b_section path="content-blog" count="3" category="72"]
+function template_part_callback_function( $atts, $content, $tag ){
+   $tp_atts = shortcode_atts(array( 
+      'path' =>  null,
+   ), $atts);         
+   ob_start();  
+  // var_dump($tp_atts['path']);
+   get_template_part($tp_atts['path']);  
+   $ret = ob_get_contents();  
+	ob_end_clean();  
+   return $content.$ret;    
+}
+add_shortcode('b_section', 'template_part_callback_function');  
+			
+/*-------------------*/
+function dateFormat($date, $format = '1'){
+
+    if ($date) {
+
+        
+			
+        switch ($format) {
+            case '1':
+                return date(DATE_RFC2822, $date);
+            case '2':
+                return date('l', $date);
+            case '3':
+                return date('l, F jS', $date);
+			case '4':
+                return date('Y/m/d', $date);	
+            default:
+                return date('M d', $date);
+        }
+		
+    }
+    
+        return false;
+    
+}			

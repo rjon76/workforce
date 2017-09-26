@@ -9,7 +9,8 @@
 
 jQuery(document).ready(function(){
 
-	jQuery('.news-item-show').bind('click', function(){jQuery(this).parents('.news-item-short').hide()})
+	//jQuery('.news-item-show').bind('click', function(){jQuery(this).parents('.news-item-short').hide()});
+	jQuery('.hideonclick').bind('click', function(){jQuery(this).hide()});
 	
 	jQuery( '#desctop-primary-menu-button' ).click( function() {	
 		var target = jQuery(this).data('target');

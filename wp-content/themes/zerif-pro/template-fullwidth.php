@@ -29,5 +29,11 @@ get_header();
 	</div><!-- .container -->
 </div><!-- .site-content -->
 <?php
-get_footer();
+	if(is_active_sidebar( 'sidebar-page-bottom' )):
+			echo '<div class="sidebar-page-bottom">';
+			dynamic_sidebar( 'sidebar-page-bottom' );
+			echo '</div>';
+	endif;
+	
+	get_footer();
 ?>

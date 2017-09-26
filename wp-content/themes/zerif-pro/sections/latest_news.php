@@ -142,14 +142,14 @@
 						
 						/*--------display short item----*/
 						if($i > $zerif_latestnews_count_open_posts):
-							echo '<div class="media news-item-short"><div class="media-left media-middle">';
+							echo '<div class="media news-item-short hideonclick" data-toggle="collapse" data-target="#news'.$post->ID.'" aria-expanded="false"><div class="media-left media-middle">';
 							echo get_the_post_thumbnail($post->ID, array('100','100'),array('class'=>'media-object img-circle')); 
 							echo '</div>';
 							echo '<div class="media-body media-middle"><h2 class="media-heading text-left">'.get_the_title().'</h2></div>';
 							echo '<div class="media-right media-middle">';
-							echo '<a class="news-item-show" role="button" data-toggle="collapse" href="#news'.$post->ID.'" aria-expanded="false" class="row-down">';
+							//echo '<a class="news-item-show row-down " role="button" data-toggle="collapse" href="#news'.$post->ID.'" aria-expanded="false">';
 							echo '<img src="'.get_template_directory_uri().'/images/row-down.png"/>';
-							echo '</a>';
+							//echo '</a>';
 							echo '</div> </div>';
 						endif;
 		
