@@ -332,7 +332,15 @@ function zerif_widgets_init() {
 		'after_widget'  => '',
 		'before_title'  => '<h2 class="widget-title">',
 		'after_title'   => '</h2>',
-	) );	
+	) );
+	register_sidebar( array(
+		'name'          => __( 'Overlay widgets', 'zerif' ),
+		'id'            => 'sidebar-overlay',
+		'before_widget' => '',
+		'after_widget'  => '',
+		'before_title'  => '',
+		'after_title'   => '',
+	) );
 
 }
 
@@ -3219,3 +3227,8 @@ function dateFormat($date, $format = '1'){
         return false;
     
 }			
+/*------*/
+function isAjaxRequest()
+{
+  	return (isset($_SERVER['HTTP_X_REQUESTED_WITH']) && $_SERVER['HTTP_X_REQUESTED_WITH']==='XMLHttpRequest') || (isset($_GET['ajax'])) ;
+}

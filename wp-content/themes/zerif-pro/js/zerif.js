@@ -26,11 +26,11 @@ jQuery(document).ready(function(){
 		return false;
 	});
 	
-	jQuery('#menu-main a').bind('click', function(){
+/*	jQuery('#menu-main a').bind('click', function(){
 		jQuery('#desctop-primary-menu').removeClass('open');
 		jQuery('#desctop-primary-menu-button').show('fast');
 		return false;
-	});
+	});*/
 	
 /*	jQuery( '.toggle' ).click( function() {	
 		var target = jQuery(this).data('target');
@@ -39,28 +39,45 @@ jQuery(document).ready(function(){
 	})*/
 /*------------Colorbox---------------*/
 	if (typeof (jQuery.colorbox) === "function" && screen.width > 480) {
-	if (typeof (jQuery.colorbox) === "function") {	
-		jQuery(".play").colorbox({
-				iframe:true,
-				inline:false,
-				fastIframe:true,
-				//innerWidth:function(){return $.urlParam('width', $(this).attr('href'));},
-				//innerHeight: function(){return $.urlParam('height', $(this).attr('href'));},
-				innerWidth:function(){var param = jQuery.urlParam('width', jQuery(this).attr('href'));  return  (param !== 0) ? param : '560px'},
-				innerHeight:function(){var param = jQuery.urlParam('height', jQuery(this).attr('href')); return  (param !== 0) ? param : '315px'},
-				//innerWidth:'560px',
-				//innerHeight:'315px',
-				scrolling:false,
-			//	title:' ',
-				rel:function(){return jQuery(this).attr('rel');},
-				controls:true,
-				//transition:'none'
-				}); 
-				
- 
-		jQuery(".colorbox").colorbox();				
-	}
-	
+		
+ 		jQuery(".overlay a").colorbox({
+				 iframe: true,
+				 
+/*				  iframe: function () {
+					  var iframe = jQuery.urlParam("iframe", jQuery(this).attr("href"))
+					  return iframe ? true : false;
+				  },*/
+				 href:function () {
+					  var href = jQuery(this).attr("href")+'?ajax=1';
+					 //console.log(href);
+					  return href;
+				  },
+				  title:' ',
+				  resize:false,
+				  notshowbtns: true, 
+				  scrolling: false,
+			/*	  opacity:0.6,
+				  speed:200,*/
+				  innerHeight: function () {
+					  var height =  jQuery.urlParam("height", jQuery(this).attr("href"));
+					  return height ? height : '60%';
+				  },
+				  innerWidth: function () {
+  					  var width =  jQuery.urlParam("width", jQuery(this).attr("href"));
+					  var winwidth = jQuery(window).width();
+					  if (winwidth > 1024)
+						  winwidth = 1024;
+					  else
+						  winwidth = '80%';
+					  return width ? width : winwidth;
+				  },
+				  onOpen: function(){
+					  activeScroll = true;
+				  },
+				  onClosed: function(){
+					  activeScroll = false;
+				  }
+			  });			
 	}
 
 });

@@ -39,7 +39,7 @@ switch ($post_format) {
 ?>
 
 <div class="col-sm-6 col-md-<?php echo $col_md; ?>  blog-post ">
-	<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+	<div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
     <div class="thumbnail">
     	<div class="thumbnail-img">
         
@@ -110,5 +110,5 @@ switch ($post_format) {
         </div>
        </div>
     </div>
-    </article><!-- #post-## -->
+    </div><!-- #post-## -->
 </div>

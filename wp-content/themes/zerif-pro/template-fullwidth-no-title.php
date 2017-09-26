@@ -1,7 +1,31 @@
 <?php
-/*
-Template Name: Full width with no title template
-*/
+/**
+ * The Template for displaying all single posts.
+ *
+ * @package zerif
+ */
+ 
+ $isAjax = isAjaxRequest();
+ 
+ if ($isAjax):
+
+ 	get_header('ajax'); ?>
+
+	<div id="content" class="site-content ajax-content">
+		<div class="container-fluid">
+				<!--div id="primary" class="content-area"-->
+					<!--main id="main" class="site-main" role="main"-->
+						<?php while ( have_posts() ) : the_post(); 
+								 get_template_part( 'content', 'page-ajax' );
+								endwhile; // end of the loop. 
+						?>
+					<!--/main--><!-- #main -->
+				<!--/div--><!-- #primary -->
+		</div>
+	</div>
+</div>    
+<?php else:
+
 get_header();
 ?>
 
@@ -30,4 +54,5 @@ get_header();
 </div><!-- .site-content -->
 <?php
 get_footer();
+endif;
 ?>

@@ -413,6 +413,12 @@
 		
 	endif;
 	
+		if(is_active_sidebar( 'sidebar-overlay' )):
+			echo '<div id="sidebar-overlay hidden">';
+			dynamic_sidebar( 'sidebar-overlay' );
+			echo '</div>';
+		endif;
+
 	wp_footer();
 	
 	zerif_bottom_body_trigger();

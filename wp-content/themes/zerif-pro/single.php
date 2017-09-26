@@ -4,6 +4,27 @@
  *
  * @package zerif
  */
+ 
+ $isAjax = isAjaxRequest();
+
+ if ($isAjax):
+	get_header('ajax'); ?>
+ ?> 
+
+	<div id="content" class="site-content ajax-content">
+		<div class="container-fluid">
+				<!--div id="primary" class="content-area"-->
+					<!--main id="main" class="site-main" role="main"-->
+						<?php while ( have_posts() ) : the_post(); 
+								 get_template_part( 'content', 'single-ajax' );
+								endwhile; // end of the loop. 
+						?>
+					<!--/main--><!-- #main -->
+				<!--/div--><!-- #primary -->
+		</div>
+	</div>
+</div>    
+<?php else:
 
 			get_header(); ?>
 			<div class="clear"></div>
@@ -30,4 +51,7 @@
 		</div><!-- .sidebar-wrap -->
 	</div>
 </div>
-<?php get_footer(); ?>
+<?php 
+get_footer(); 
+endif;
+?>

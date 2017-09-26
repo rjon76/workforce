@@ -156,7 +156,7 @@ table, caption, tbody, tfoot, thead, tr, th, td {
 	font-style: inherit;
 	font-weight: inherit;
 	margin: 0;
-	outline: 0;
+	outline: none;
 	padding: 0;
 	vertical-align: baseline;
 }
@@ -217,11 +217,17 @@ q:after {
     content: close-quote;
 }
 a:focus {
-	outline: thin dotted;
+	outline: none;
 }
 a:hover,
-a:active {
-	outline: 0;
+a:active,
+a:focus,
+a:visited,
+a{
+	outline: none !important; 
+	outline: 0  !important; 
+	outline: hidden  !important; 
+;
 }
 a img {
 	border: 0;
@@ -402,14 +408,16 @@ h2, .h2 {
 }
 h3, .h3 {
 	font-size: 26px;
+	font-weight: 500;
+	font-family: "MuseoSansMedium";
 }
 h4, .h4 {
 	font-size: 18px;
 }
-h5 {
+h5, .h5 {
 	font-size: 17px;
 }
-h6, .h5 {
+h6, .h6 {
 	font-size: 16px;
 }
 h1, .h1, h2, .h2, h3, .h3 {
@@ -417,6 +425,7 @@ h1, .h1, h2, .h2, h3, .h3 {
     margin-top: 0.15em;
 }
 .uppercase{text-transform: uppercase}
+.border-bottom-2{height: 2px; background-color:rgba(196,189,170,0.21);}
 /*--------------------------------------------------------------
 3.0 Buttons
 --------------------------------------------------------------*/
@@ -940,8 +949,8 @@ textarea:active,
 input:active, 
 textarea:focus, 
 input:focus {
-    outline: 1 !important;
-    outline-color: #e96656 !important;
+    outline: none !important;
+    outline-color:  transparent!important;
        
   -webkit-box-shadow:none !important;
   box-shadow:none !important;
@@ -1303,6 +1312,9 @@ a:active {
 	float:none;
 	position: relative;
 }
+h1.entry-title{
+	text-transform: uppercase
+}
 /*
 .entry-title:before {
 	position: absolute;
@@ -1315,7 +1327,7 @@ a:active {
 	bottom: -9px;
 	left: 0;
 }
-*/
+
 .entry-title:after {
 	position: absolute;
 	margin: auto;
@@ -1326,7 +1338,7 @@ a:active {
 	background: #e96656;
 	bottom: -9px;
 	left: 0;
-}
+}*/
 .entry-meta{
 	margin-top: 10px;
 }
@@ -1838,7 +1850,7 @@ object {
 	height: 94px;
 	position: relative;
 	line-height: 60px;
-	padding: 15px 15px;
+	padding: 15px 0px;
 	display: inline-block;
 }
 .navbar-brand > img {
@@ -2365,7 +2377,7 @@ video::-webkit-media-controls {
     display: none;
     overflow: hidden;
     -webkit-overflow-scrolling: touch;
-    outline: 0;
+    outline: none;
     overflow-x: hidden;
     overflow-y: auto;
     background: #fff;
@@ -3627,9 +3639,15 @@ article .posted-on a:hover{
 	line-height: 2;
 	
 }
-.entry-content h3{
+.entry-content h1, .entry-content .h1,
+.entry-content h2, .entry-content .h2,
+.entry-content h3, .entry-content .h3,
+.entry-content h6, .entry-content .h6{
 	color:#191919;
-	font-weight: 300
+
+}
+.entry-content h2, .entry-content .h2{
+	line-height: 1.4
 }
 .entry-content p{
 	margin-bottom:40px
@@ -3845,7 +3863,6 @@ input[type=submit].edd-submit {
     -webkit-border-radius: 3px;
     -moz-border-radius: 3px;
     border-radius: 3px;
-    border: none;
 }
 
 .edd-alert-error,
@@ -4051,7 +4068,7 @@ p.edd-alert-error,
   	}
 }
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
 	.edd_download {
 		width: 100% !important;
 	}
@@ -4222,7 +4239,7 @@ p.edd-alert-error,
 }
 
 .nav a {
-	 outline: 0;
+	 outline: hidden;
 }
 
 .nav > li.current_page_item a, .nav > li.current-menu-item a {
@@ -4490,7 +4507,37 @@ p.edd-alert-error,
 	font-size: 26px;
 	margin-top:-4px
 }
-
+/*---------------------------*/
+.well-lg {
+    border-radius: 6px;
+    padding: 50px 80px;
+}
+.well {
+    background-color: #F7F5EF;
+    border: 1px solid #F7F5EF;
+    border-radius: 5px;
+    box-shadow: none;
+}
+.thumbnail.style-2 {
+    background-color: transparent;
+    border: none;
+    transition: none;
+	margin-top:30px
+}
+.thumbnail.style-2 > img{
+	margin-left:0px
+}
+.thumbnail.style-2 .caption{
+padding: 0px;
+}
+.thumbnail.style-2 .caption h6{
+	margin-top: 20px;
+	margin-bottom: 30px;
+}
+.thumbnail.style-2 .caption p{
+    color: #5F5F5F;
+	margin-bottom:0.1em
+}
 
 /*--------------------------------*/
 .blog-post{
@@ -4540,6 +4587,32 @@ p.edd-alert-error,
 	margin-bottom: 50px;
 	padding-bottom: 0px
 }
+
+/*----------*/
+.contact-person{
+	line-height: 1.5;
+	font-family:"Museo Sans Cyrl 500";
+	font-size:11px;
+	letter-spacing:0pt;
+	color:rgb(141,166,173);
+	text-align:left;
+	margin-top:20px !important;
+	margin-bottom:30px 
+}
+.contact-person h6{
+	color:#191919
+}
+.contact-person a{
+	font-family:'Open Sans', Helvetica, sans-serif;
+	font-size:12px;
+	line-height:183%;
+	color:rgb(159,163,167);
+	text-align:left;
+}
+.contact-person a:hover{
+	text-decoration: underline
+}
+
 /*---------------------------------------
  **   Responsive            -----
 -----------------------------------------*/
@@ -4689,8 +4762,9 @@ p.edd-alert-error,
 	.our-team .row > .col-lg-4:nth-child(2n) .team-member{	
     	padding: 50px 30px;
 	}
+	
 	.team-member .details{
-	 	line height: 1.67
+	 	line-height: 1.67
 	}
 	.jumbotron .h1, .jumbotron h1 {
     	font-size: 30px;
@@ -5145,7 +5219,20 @@ h6 {
 	    margin-bottom: 25px;
     	padding: 30px 15px;
 	}
-	
+	.content-left-wrap {
+    	padding-top: 1px;
+	}
+	.well-lg {
+    	border-radius: 4px;
+    	padding: 15px 15px;
+	}
+	.thumbnail.style-2 {
+	    margin-top: 10px;
+    }
+	.thumbnail.style-2 .caption h6 {
+    	margin-bottom: 20px;
+    	margin-top: 10px;
+	}
 }
 @media (max-width: 600px) {
 	.listpost-content-wrap-large {

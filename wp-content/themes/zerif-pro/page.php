@@ -1,24 +1,30 @@
 <?php
-
 /**
-
- * The template for displaying all pages.
-
+ * The Template for displaying all single posts.
  *
-
- * This is the template that displays all pages by default.
-
- * Please note that this is the WordPress construct of pages
-
- * and that other 'pages' on your WordPress site will use a
-
- * different template.
-
- *
-
  * @package zerif
-
  */
+ 
+ $isAjax = isAjaxRequest();
+ 
+ if ($isAjax):
+
+ 	get_header('ajax'); ?>
+
+	<div id="content" class="site-content ajax-content">
+		<div class="container-fluid">
+				<!--div id="primary" class="content-area"-->
+					<!--main id="main" class="site-main" role="main"-->
+						<?php while ( have_posts() ) : the_post(); 
+								 get_template_part( 'content', 'page-ajax' );
+								endwhile; // end of the loop. 
+						?>
+					<!--/main--><!-- #main -->
+				<!--/div--><!-- #primary -->
+		</div>
+	</div>
+</div>    
+<?php else:
 
 	get_header(); ?>
 	<div class="clear"></div>
@@ -70,4 +76,7 @@
 		?>
 	</div><!-- .container -->
 </div><!-- .site-content -->
-<?php get_footer(); ?>
+<?php 
+get_footer(); 
+
+endif;?>

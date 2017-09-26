@@ -114,6 +114,7 @@
 							echo '"';
 							//echo ($i <= $zerif_latestnews_count_open_posts) ? 'style="display:none"' : "";
 							echo ' id="news'.$post->ID.'"';
+							echo 'data-scrollreveal="enter '.$odd.' move 60px after 0.00s over 1s"';
 							echo '>';
 							if ($odd == 'left'):
 								echo '<div class="media-left media-middle">';
@@ -142,7 +143,10 @@
 						
 						/*--------display short item----*/
 						if($i > $zerif_latestnews_count_open_posts):
-							echo '<div class="media news-item-short hideonclick" data-toggle="collapse" data-target="#news'.$post->ID.'" aria-expanded="false"><div class="media-left media-middle">';
+							echo '<div class="media news-item-short hideonclick" data-toggle="collapse" data-target="#news'.$post->ID.'" aria-expanded="false"';
+							echo 'data-scrollreveal="enter '.$odd.' move 60px after 0.00s over 1s"';
+							echo '>';
+							echo '<div class="media-left media-middle">';
 							echo get_the_post_thumbnail($post->ID, array('100','100'),array('class'=>'media-object img-circle')); 
 							echo '</div>';
 							echo '<div class="media-body media-middle"><h2 class="media-heading text-left">'.get_the_title().'</h2></div>';
