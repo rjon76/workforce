@@ -49,6 +49,12 @@ jQuery(document).ready(function(){
 				  },*/
 				 href:function () {
 					  var href = jQuery(this).attr("href")+'?ajax=1';
+					 if (href.indexOf('?') > 0){
+						href = href + '&ajax=1';
+					 }else{
+					    href = href + '?ajax=1';
+						 
+					 }
 					 //console.log(href);
 					  return href;
 				  },
