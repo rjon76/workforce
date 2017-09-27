@@ -208,7 +208,7 @@ else:
 <?php if( is_home() ): ?>
 
 <div id="mobile-bg-responsive" class="zerif-mobile-bg-helper-wrap-all">
-	<div class="zerif-mobile-bg-helper-bg"><div class="zerif-mobile-bg-helper-bg-inside"></div></div>
+	
 	<div class="zerif-mobile-bg-helper-content">
 
 <?php endif; ?>
