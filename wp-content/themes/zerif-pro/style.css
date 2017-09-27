@@ -2462,7 +2462,8 @@ video::-webkit-media-controls {
 	font-size:16px;
 	line-height:263%;
 	color:rgb(53,53,53);
-	padding: 70px 0 50px;
+	padding-top: 70px;
+	padding-bottom:50px;
 	background-image: url("images/66.png");
     background-position: 50% 50%;
     background-repeat: no-repeat;
@@ -5050,9 +5051,11 @@ h6 {
     	padding-top: 50px;
 	}
 	.about-us .section-text{
-	font-size:15px;
-	padding: 30px 0 30px;
-		background-image: none
+		font-size:15px;
+		padding-top: 30px;
+		padding-bottom:30px;
+		background-image: none;
+		line-height: 1.87
 	}
 	.about-us  .section-header{
 		padding-bottom: 0px;	
@@ -5233,6 +5236,27 @@ h6 {
     	margin-bottom: 20px;
     	margin-top: 10px;
 	}
+	.blog-post .thumbnail .caption {
+	    padding: 15px 15px;
+	}
+	article.hentry {
+    	padding-bottom: 0;
+	}
+	.navbar-brand {
+	    height: 60px;
+	    line-height: 60px;
+    	padding: 15px 0 0px;
+	}
+	.footer-widget li {
+	    margin-bottom: 0;
+    	margin-top: 0;
+	}
+	.footer-widget-wrap .widget .widget-title {
+    	margin-bottom: 0px;
+	    margin-top: 15px;
+    
+	}
+	
 }
 @media (max-width: 600px) {
 	.listpost-content-wrap-large {
@@ -5249,7 +5273,12 @@ h6 {
 	.entry-footer-large {
 		padding-right: 0;
 	}
-		.jumbotron .h1, .jumbotron h1 {
+	.container .jumbotron, .container-fluid .jumbotron {
+    	border-radius: 5px;
+    	padding-left: 10px;
+    	padding-right: 10px;
+	}
+	.jumbotron .h1, .jumbotron h1 {
     	font-size: 30px;
 		margin-bottom:25px
 	}

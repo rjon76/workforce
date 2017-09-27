@@ -56,7 +56,8 @@ if( (isset($zerif_ourfocus_show) && $zerif_ourfocus_show != 1) || isset( $wp_cus
 			$zerif_ourfocus_text = get_theme_mod('zerif_ourfocus_text');
 
 			if( !empty($zerif_ourfocus_text) ):
-				echo '<div class="row">';
+				echo '<div class="clearfix"></div>';	
+				echo '<div class="row_">';
 				echo '<div class="col-md-10 col-md-offset-1 section-text">'.wp_kses_post($zerif_ourfocus_text).'</div>';
 				echo '</div>';
 				echo '<div class="clearfix"></div>';	
