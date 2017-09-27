@@ -228,7 +228,8 @@ class Default_Calendar_Grid implements Calendar_View {
 								
 							}*/
 							echo ' <span class="simcal-current-month">' . date_i18n( 'F', $calendar->start ) .'</span> ';
-							echo ' <span class="simcal-current-year">' . __('events') . '</span> ';
+							echo ' <span class="simcal-current-event">' . __('events') . '</span> ';
+							echo ' <span class="simcal-current-year hidden">' . date_i18n( 'Y', $calendar->start ) . '</span> ';
 							echo '</h3>';
 
 							?>
