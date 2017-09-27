@@ -114,7 +114,7 @@
 							echo '"';
 							//echo ($i <= $zerif_latestnews_count_open_posts) ? 'style="display:none"' : "";
 							echo ' id="news'.$post->ID.'"';
-							echo 'data-scrollreveal="enter '.$odd.' move 60px after 0.00s over 1s"';
+							echo ($i <= $zerif_latestnews_count_open_posts) ? 'data-scrollreveal="enter '.$odd.' move 60px after 0.00s over 1s"' : "";
 							echo '>';
 							if ($odd == 'left'):
 								echo '<div class="media-left media-middle">';
