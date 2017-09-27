@@ -4615,7 +4615,7 @@ padding: 0px;
 	font-size:11px;
 	color:rgb(141,166,173);
 	text-align:left;
-	margin-top:20px !important;
+	margin-top:40px !important;
 	margin-bottom:30px 
 }
 .contact-person h6{
@@ -4627,9 +4627,10 @@ padding: 0px;
 	line-height:183%;
 	color:rgb(159,163,167);
 	text-align:left;
+	text-decoration: underline
 }
 .contact-person a:hover{
-	text-decoration: underline
+	text-decoration: none
 }
 
 /*---------------------------------------
