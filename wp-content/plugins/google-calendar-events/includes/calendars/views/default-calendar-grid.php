@@ -222,10 +222,13 @@ class Default_Calendar_Grid implements Calendar_View {
 								$current = array_reverse( $current );
 							}
 
-							foreach ( $current as $k => $v ) {
+							/*foreach ( $current as $k => $v ) {
+								var_dump( $calendar->start);
 								echo ' <span class="simcal-current-' . $k , '">' . date_i18n( $v, $calendar->start ) . '</span> ';
-							}
-
+								
+							}*/
+							echo ' <span class="simcal-current-month">' . date_i18n( 'F', $calendar->start ) .'</span> ';
+							echo ' <span class="simcal-current-year">' . __('events') . '</span> ';
 							echo '</h3>';
 
 							?>
@@ -398,7 +401,8 @@ class Default_Calendar_Grid implements Calendar_View {
 				$the_color = new Color( $calendar->today_color );
 				$bg_color = '#' . $the_color->getHex();
 				$color = $the_color->isDark() ? $the_color->getHex() : $the_color->getHex();
-				$border_style = ' style="border: 1px solid ' . $bg_color . ';"';
+				//$border_style = ' style="border: 1px solid ' . $bg_color . ';"';
+				
 			} elseif ( $current_max < $now ) {
 				$day_classes .= ' simcal-past simcal-day';
 			} elseif ( $current_min > $now ) {
@@ -489,12 +493,14 @@ class Default_Calendar_Grid implements Calendar_View {
 			echo '<td class="' . $day_classes . '" data-events-count="' . strval( $count ) . '">' . "\n";
 
 			if ( $color ) {
-				$day_style = ' style="background-color: ' . $bg_color . '; color: ' . $color .'"';
+				//$day_style = ' style="background-color: ' . $bg_color . '; color: ' . $color .'"';
+				$day_style = ' style="color: ' . $bg_color .'"';
 			} elseif ( $count > 0 ) {
 				$the_color = new Color( $calendar->days_events_color );
 				$color = ! $color ? ( $the_color->isDark() ? '#ADAA97' : '#000000' ) : $color;
 				$bg_color = ! $bg_color ? '#' . $the_color->getHex() : $bg_color;
-				$day_style = ' style="background-color: ' . $bg_color . '; color: ' . $color .'"';
+				//$day_style = ' style="background-color: ' . $bg_color . '; color: ' . $color .'"';
+				$day_style = ' style=" color: ' . $bg_color .'"';
 			} else {
 				$day_style = '';
 			}

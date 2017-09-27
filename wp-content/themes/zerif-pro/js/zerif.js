@@ -66,13 +66,18 @@ jQuery(document).ready(function(){
 				  speed:200,*/
 				  innerHeight: function () {
 					  var height =  jQuery.urlParam("height", jQuery(this).attr("href"));
-					  return height ? height : '60%';
+					    var winheight = jQuery(window).height();
+					  if (winheight > 1000)
+						  height = '355px';
+					  else
+						  height = '60%';
+					  return height;
 				  },
 				  innerWidth: function () {
   					  var width =  jQuery.urlParam("width", jQuery(this).attr("href"));
 					  var winwidth = jQuery(window).width();
 					  if (winwidth > 1024)
-						  winwidth = 1024;
+						  winwidth =977;
 					  else
 						  winwidth = '80%';
 					  return width ? width : winwidth;

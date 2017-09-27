@@ -448,7 +448,7 @@ h1, .h1, h2, .h2, h3, .h3 {
 	border-radius: 4px;
 	margin: 10px;
 	border: none;*/
-	margin: 10px;
+	margin-right: 20px;
 	border: 2px solid transparent;
     border-radius: 6px;
     font-weight: 700;
@@ -4458,9 +4458,8 @@ p.edd-alert-error,
 }
 .simcal-default-calendar .simcal-nav-button {
     padding: 10px !important;
-    width: auto !important;
 	line-height: 1;
-	width: 40px;
+	width:  auto !important;
 	height: 40px
 }
 .simcal-default-calendar-light .simcal-nav-button {
@@ -4470,6 +4469,20 @@ p.edd-alert-error,
 	
 }
 
+.simcal-current{
+	text-transform: uppercase
+}
+.simcal-default-calendar-grid.simcal-default-calendar-light .simcal-day:hover {
+    background-color: transparent !important;
+}
+.simcal-default-calendar-grid.simcal-default-calendar-light .simcal-day:hover > div {
+    box-shadow:0 0 3px rgba(0,0,0,0.2);
+	-webkit-transition: all 0.3s ease-out;
+		-moz-transition: all 0.3s ease-out;
+		-ms-transition: all 0.3s ease-out;
+		-o-transition: all 0.3s ease-out;
+		transition: all 0.3 ease-out;
+}
 /*----------------bkg10---------------*/
 .bkg10{
 	background-image: url(images/background10.jpg);
@@ -4590,11 +4603,16 @@ padding: 0px;
 }
 
 /*----------*/
-.contact-person{
+.ajax-content .contacts-block{
+	padding-top:50px;
+	padding-bottom:50px;
+	padding-left:50px;
+	padding-right:50px;
+	
+}
+ .contact-person{
 	line-height: 1.5;
-	font-family:"Museo Sans Cyrl 500";
 	font-size:11px;
-	letter-spacing:0pt;
 	color:rgb(141,166,173);
 	text-align:left;
 	margin-top:20px !important;
