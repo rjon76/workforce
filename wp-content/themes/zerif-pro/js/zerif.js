@@ -8,9 +8,13 @@
 
 
 jQuery(document).ready(function(){
-
-	//jQuery('.news-item-show').bind('click', function(){jQuery(this).parents('.news-item-short').hide()});
-	jQuery('.hideonclick').bind('click', function(){jQuery(this).hide()});
+	
+/*	jQuery('.hideonclick').bind('click', function(){ 
+		jQuery(this).hide();
+	});*/
+		jQuery('.hideonclick').click(function(){ 
+		jQuery(this).hide();
+	});
 	
 	jQuery( '#desctop-primary-menu-button' ).click( function() {	
 		var target = jQuery(this).data('target');
@@ -58,26 +62,26 @@ jQuery(document).ready(function(){
 					 //console.log(href);
 					  return href;
 				  },
-				  title:' ',
+				  title:'',
 				  resize:false,
 				  notshowbtns: true, 
 				  scrolling: false,
-			/*	  opacity:0.6,
-				  speed:200,*/
+				  opacity:0.7,
+				  speed:200,
 				  innerHeight: function () {
 					  var height =  jQuery.urlParam("height", jQuery(this).attr("href"));
-					    var winheight = jQuery(window).height();
+					  var winheight = jQuery(window).height();
 					  if (winheight > 1000)
-						  height = '355px';
+						  winheight = '210px';
 					  else
-						  height = '60%';
-					  return height;
+						  winheight = '45%';
+				  	  return height ? height : winheight;
 				  },
 				  innerWidth: function () {
   					  var width =  jQuery.urlParam("width", jQuery(this).attr("href"));
 					  var winwidth = jQuery(window).width();
 					  if (winwidth > 1024)
-						  winwidth =977;
+						  winwidth ='900px';
 					  else
 						  winwidth = '80%';
 					  return width ? width : winwidth;
