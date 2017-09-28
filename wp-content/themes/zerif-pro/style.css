@@ -4604,11 +4604,14 @@ padding: 0px;
 
 /*----------*/
 .ajax-content .contacts-block{
-	padding-top:50px;
-	padding-bottom:50px;
-	padding-left:50px;
-	padding-right:50px;
+	padding-top:30px;
+	padding-bottom:30px;
+	padding-left:40px;
+	padding-right:40px;
 	
+}
+.ajax-content .entry-content{
+	margin-top:0px
 }
  .contact-person{
 	line-height: 1.5;
@@ -4632,7 +4635,23 @@ padding: 0px;
 .contact-person a:hover{
 	text-decoration: none
 }
-
+/*-----------*/
+#cboxTitle {
+    background: #fff none repeat scroll 0 0;
+    border: none;
+    border-radius: 10px;
+    bottom: 12px;
+    box-shadow: none;
+    color: #555;
+    font-size: 0.9em;
+    left: 10px;
+    max-width: 40%;
+    overflow: auto;
+    overflow-wrap: break-word;
+    padding: 1px 7px;
+    position: absolute;
+    text-align: center;
+}
 /*---------------------------------------
  **   Responsive            -----
 -----------------------------------------*/
