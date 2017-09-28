@@ -4087,6 +4087,9 @@ p.edd-alert-error,
 	padding-top: 100px;
 	background: #FFFFFF;
 }
+.latest-news .section-header {
+    padding-bottom: 5px;
+}
 .latest-news .row-down{
 	transition: margin 0.2s ease-out 0s;
 	position: relative;
@@ -4099,8 +4102,9 @@ p.edd-alert-error,
 .latest-news .news-item{
 	background-color: #F7F6F0;
 	border-radius:5px;
-	margin-bottom:70px
+	margin-top:70px
 }
+
 .latest-news .news-item.left{
 	border-right:6px solid #FFC709
 }
@@ -4113,7 +4117,9 @@ p.edd-alert-error,
 	line-height: 1.67;
 	text-align: left;
 	padding-left:70px;
-	padding-right: 5px
+	padding-right: 15px;
+		padding-top:30px;
+	padding-bottom: 30px;
 }
 .latest-news .news-item .media-body .read-more{
 	font-size:20px;
