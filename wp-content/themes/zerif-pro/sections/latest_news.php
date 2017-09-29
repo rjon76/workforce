@@ -67,14 +67,18 @@
 						while ( $zerif_latest_loop->have_posts() ) : $zerif_latest_loop->the_post();
 
 							$i++;
-							$custom_link = get_field( 'link', $post->ID);	
+							$custom_link = get_field( 'custom_link', $post->ID);	
 
 							$custom_link = ($custom_link) ? $custom_link : NULL;
 
-							$custom_link_attr = get_field( 'link_attr', $post->ID);	
+							$custom_link_attr = get_field( 'custom_link_attr', $post->ID);	
 						
 							$custom_link_attr = ($custom_link_attr) ? $custom_link_attr : '';
-				
+
+							$custom_link_css = get_field( 'custom_link_class', $post->ID);	
+						
+							$custom_link_css = ($custom_link_css) ? $custom_link_css : '';
+
 							$post_format = get_post_format($post->ID) ;
 
 							$post_format = $post_format ? $post_format : 'post';
@@ -89,18 +93,18 @@
 							break;
 				
 							case 'image':
-								$custom_link_css = 'lightbox';
+								$custom_link_css = 'colorbox';
 								$custom_link_attr = '';
 							break;
 					
 							case 'link':
-								$custom_link_css = ''; 
+								//$custom_link_css = ''; 
 								$custom_link_attr .= ' target="_blank" rel="nofollow"';
 							break;
 					
 							default:
-								$custom_link_css = '';
-								$custom_link_attr = '';
+								//$custom_link_css = '';
+								//$custom_link_attr = '';
 							break;
 				
 						endswitch;

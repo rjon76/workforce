@@ -62,7 +62,7 @@ jQuery(document).ready(function(){
 					 //console.log(href);
 					  return href;
 				  },
-				  title:'',
+				  title:' ',
 				  resize:false,
 				  notshowbtns: true, 
 				  scrolling: false,
