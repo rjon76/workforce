@@ -44,7 +44,7 @@ jQuery(document).ready(function(){
 /*------------Colorbox---------------*/
 	if (typeof (jQuery.colorbox) === "function" && screen.width > 480) {
 		
- 		jQuery(".overlay a").colorbox({
+ 		jQuery(".overlay a, a.overlay").colorbox({
 				 iframe: true,
 				 
 /*				  iframe: function () {
