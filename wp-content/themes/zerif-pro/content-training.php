@@ -84,12 +84,12 @@ switch ($post_format) {
 				echo '<div class="dates">';
 				echo '<table width="100%">';
                 if($date_start ):
-				 	echo '<tr><td >'.__('NEXT START DATE:').'</td><td><span class="badge">'.dateFormat($date_start,3).'</span></td></tr>';
+				 	echo '<tr><td >'.__('NEXT START DATE:').'</td><td><span class="badge">'.$date_start.'</span></td></tr>';
 				endif;
 				
 				echo '<tr><td>'.__('APPLICATION DEADLINE: ').'</td><td>';
 				if($date_stop) :
-					echo '<span class="badge">'.dateFormat($date_stop, 3 ).'</span>';
+					echo '<span class="badge">'.$date_stop.'</span>';
 				else:
 					echo '<span class="infin">&infin;</span>';
 				endif;
