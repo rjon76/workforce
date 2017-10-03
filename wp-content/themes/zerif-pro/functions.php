@@ -3117,18 +3117,18 @@ function template_post_callback_function( $atts, $content, $tag ){
 			'post_status' => 'publish',
 			'posts_per_page' => $atts['count'],
 			'suppress_filters' => false,
-			'orderby' => 'date',
+			//'orderby' => 'date',
 			'order' => 'ASC',
 			'category_name' => $slug,
 			'meta_key' => 'date_start',
 			'orderby'=>'meta_value',
-			'meta_query' => array(
+			/*'meta_query' => array(
         	array  (
            	 	'key' => 'date_stop',
            	 	'value' => $date,
 				'compare' => '<='
        		 )
-			)
+			)*/
         );
 		
         query_posts($args); 
