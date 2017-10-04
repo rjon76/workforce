@@ -71,8 +71,8 @@ jQuery(document).ready(function(){
 				  innerHeight: function () {
 					  var height =  jQuery.urlParam("height", jQuery(this).attr("href"));
 					  var winheight = jQuery(window).height();
-					  if (winheight > 1000)
-						  winheight = '210px';
+					  if (winheight < 1000)
+						  winheight = '340px';
 					  else
 						  winheight = '45%';
 				  	  return height ? height : winheight;

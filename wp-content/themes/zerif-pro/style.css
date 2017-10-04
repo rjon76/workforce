@@ -4617,7 +4617,7 @@ padding: 0px;
 /*----------*/
 .ajax-content .contacts-block{
 	padding-top:15px;
-	padding-bottom:15px;
+	padding-bottom:0px;
 	padding-left:40px;
 	padding-right:40px;
 	
@@ -4643,6 +4643,9 @@ height: 100vh;
 	text-align:left;
 	margin-top:40px !important;
 	margin-bottom:30px 
+}
+.contact-person:last-child{
+	margin-bottom:0px 
 }
 .contact-person h6{
 	color:#191919
